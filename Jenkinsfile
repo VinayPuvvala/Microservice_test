@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
             }
-        /*stage('DeployToKubernetes') {
+        stage('DeployToKubernetes') {
             
             steps {
                 /*input 'Deploy?'
