@@ -58,24 +58,28 @@ pipeline {
                     }
                 }
             }
-            
-        /*stage('DeployToProduction') {
+            stage('Pull Docker Image') {
             
             steps {
-                /*input 'Deploy to Production?'
+                script {
+                    docker.withRegistry('http://475485431052.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
+                        docker.image('harrisdemorepo').pull()
+                    }
+                    }
+                }
+            }
+        /*stage('DeployToKubernetes') {
+            
+            steps {
+                /*input 'Deploy?'
                milestone(1)
-                withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'aws',
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-            ]]) {
+                
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'sample.yml',
                     enableConfigSubstitution: true
                 )
-                }
+                }*/
                 sh '''
                 export PATH=$PATH:/var/lib/jenkins
                 kubectl get nodes
