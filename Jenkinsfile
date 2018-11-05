@@ -58,7 +58,7 @@ pipeline {
                     }
                 }
             }
-            stage('Pull Docker Image') {
+            /*stage('Pull Docker Image') {
             
             steps {
                 script {
@@ -67,7 +67,7 @@ pipeline {
                     }
                     }
                 }
-            }
+            }*/
         stage('DeployToKubernetes') {
             
             steps {
