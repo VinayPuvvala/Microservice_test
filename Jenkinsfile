@@ -44,7 +44,7 @@ pipeline {
             
             steps {
                 script {
-                 docker.build(demo)
+                 docker.build('harrisdemorepo')
                 }
                     }
                 }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('475485431052.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
-                        docker.image('demo').push('latest')
+                        docker.image('harrisdemorepo').push('latest')
                     }
                     }
                 }
