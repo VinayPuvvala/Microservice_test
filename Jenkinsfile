@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/VinayPuvvala/demo.git']]])
+                git url: 'https://github.com/VinayPuvvala/Microservice_test.git'
         }
         }
         stage('build') {
@@ -43,25 +43,17 @@ pipeline {
         stage('Build Docker Image') {
             
             steps {
-                script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
-                    app.inside {
-                        sh 'echo $curl(18.206.96.209:9000)'
+                 docker.build(demo)
                     }
                 }
-            }
-        }
         stage('Push Docker Image') {
             
             steps {
-                script {
-                    docker.withRegistry('https://hub.docker.com/r/vpuvvala/demo/', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
+                    docker.withRegistry('475485431052.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
+                        docker.image('demo').push('latest')
                     }
                 }
             }
-        }
             
         /*stage('DeployToProduction') {
             
