@@ -1,45 +1,32 @@
-
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: frontend
-  labels:
-    app: guestbook
+  name: harrisdemorepo
 spec:
-  selector:
-    matchLabels:
-      app: guestbook
-      tier: frontend
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
-        app: guestbook
-        tier: frontend
+        app: harrisdemorepo
     spec:
       containers:
-      - name: php-redis
-        image: gcr.io/google-samples/gb-frontend:v4
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-        env:
-        - name: GET_HOSTS_FROM
-          value: dns
+      - name: harrisdemorepo
+        image: 475485431052.dkr.ecr.us-east-1.amazonaws.com/harrisdemorepo:latest
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: $KUBERNETES_SECRET_NAME
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: harrisdemorepo
   labels:
-    app: guestbook
-    tier: frontend
+    app: harrisdemorepo
+    tier: harrisdemorepo
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: guestbook
+    app: harrisdemorepo
