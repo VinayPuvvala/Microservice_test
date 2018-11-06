@@ -62,7 +62,7 @@ pipeline {
             
             steps {
                 script {
-                    docker.withRegistry('http://475485431052.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
+                    docker.withRegistry('http://475485431052.dkr.ecr.us-east-1.amazonaws.com') {
                         docker.image('harrisdemorepo').pull()
                     }
                     }
