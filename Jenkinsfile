@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('checkout') {
+       /* stage('checkout') {
             steps {
                 git url: 'https://github.com/VinayPuvvala/Microservice_test.git'
         }
