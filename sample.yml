@@ -7,13 +7,13 @@ spec:
   template:
     metadata:
       labels:
-        app: harrisdemorepo
+        app: SpringBootMavenExample
     spec:
       containers:
       - name: harrisdemorepo
         image: 475485431052.dkr.ecr.us-east-1.amazonaws.com/harrisdemorepo:latest
         ports:
-        - containerPort: 80
+        - containerPort: 9090
       imagePullSecrets:
       - name: $KUBERNETES_SECRET_NAME
 ---
@@ -22,11 +22,11 @@ kind: Service
 metadata:
   name: harrisdemorepo
   labels:
-    app: harrisdemorepo
+    app: SpringBootMavenExample
     tier: harrisdemorepo
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+  - port: 9090
   selector:
-    app: harrisdemorepo
+    app: SpringBootMavenExample
