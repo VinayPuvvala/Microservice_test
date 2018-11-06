@@ -73,7 +73,7 @@ pipeline {
             steps {
                 //input 'Deploy?'
                //milestone(1)
-                kubernetesDeploy configs: 'sample.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+                    kubernetesDeploy configs: 'sample.yml', dockerCredentials: [[credentialsId: 'ecr:us-east-1:aws', url: 'http://475485431052.dkr.ecr.us-east-1.amazonaws.com/']], kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 
                 /*kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
