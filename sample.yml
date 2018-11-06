@@ -15,7 +15,7 @@ spec:
         ports:
         - containerPort: 9090
       imagePullSecrets:
-      - name: $KUBERNETES_SECRET_NAME
+      - name: my-aws-crdentials
 ---
 apiVersion: v1
 kind: Service
