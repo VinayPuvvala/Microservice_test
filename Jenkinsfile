@@ -73,12 +73,13 @@ pipeline {
             steps {
                 input 'Deploy?'
                milestone(1)
-                
-                kubernetesDeploy(
+                kubernetesDeploy configs: './sample.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+
+                /*kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'sample.yml',
                     enableConfigSubstitution: true
-                )
+                )*/
                 }
                 /*sh '''
                 export PATH=$PATH:/var/lib/jenkins
