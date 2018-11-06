@@ -84,7 +84,7 @@ pipeline {
                 kubectl get svc
                 //kubectl create -f sample.yml
                 '''  */              
-             }
+             //}
             
     }
         
