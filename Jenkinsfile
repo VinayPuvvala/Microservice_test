@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('checkout') {
+        /*stage('checkout') {
             steps {
                 git url: 'https://github.com/VinayPuvvala/Microservice_test.git'
         }
@@ -68,27 +68,25 @@ pipeline {
                     }
                 }
             }*/
-        /*stage('DeployToKubernetes') {
+        stage('DeployToKubernetes') {
             
             steps {
                 //input 'Deploy?'
                //milestone(1)
-                    kubernetesDeploy configs: 'sample.yml', dockerCredentials: [[credentialsId: 'ecr:us-east-1:aws', url: 'http://475485431052.dkr.ecr.us-east-1.amazonaws.com']], kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: 'my-aws-credentials', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'sample.yml',
                     enableConfigSubstitution: true
                 )
                 }
-                sh '''
+                /*sh '''
                 export PATH=$PATH:/var/lib/jenkins
                 kubectl get svc
                 //kubectl create -f sample.yml
-                '''                
+                '''  */              
              }
             
-    }*/
+    }
         
     }
 }
