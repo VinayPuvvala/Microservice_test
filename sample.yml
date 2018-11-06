@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
   name: harrisdemorepo
 spec:
@@ -7,26 +7,27 @@ spec:
   template:
     metadata:
       labels:
-        app: SpringBootMavenExample
+        app: harrisdemorepo
     spec:
       containers:
       - name: harrisdemorepo
         image: 475485431052.dkr.ecr.us-east-1.amazonaws.com/harrisdemorepo:latest
         ports:
-        - containerPort: 9090
-      imagePullSecrets:
-      - name: my-aws-crdentials
+        - containerPort: 1883
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: harrisdemorepo
   labels:
-    app: SpringBootMavenExample
-    tier: harrisdemorepo
+    app: harrisdemorepo
 spec:
   type: LoadBalancer
   ports:
-  - port: 9090
+  - port: 1883
+    targetPort: 1883
+    protocol: TCP
+    name: harrisdemorepo
   selector:
-    app: SpringBootMavenExample
+    app: harrisdemorepo
