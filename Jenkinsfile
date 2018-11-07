@@ -78,18 +78,18 @@ pipeline {
             steps {
                 //input 'Deploy?'
                //milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'sample.yml',
-                    enableConfigSubstitution: true
-                )
-                }
-                /*sh '''
+                //kubernetesDeploy(
+                   // kubeconfigId: 'kubeconfig',
+                   // configs: 'sample.yml',
+                    //enableConfigSubstitution: true
+                //)
+                //}
+                sh '''
                 export PATH=$PATH:/var/lib/jenkins
                 kubectl get svc
                 //kubectl create -f sample.yml
-                '''  */              
-             //}
+                '''              
+             }
             
     }
         
