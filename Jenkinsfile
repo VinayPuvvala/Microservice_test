@@ -53,7 +53,7 @@ pipeline {
                 sh '$(aws ecr get-login --no-include-email --region us-east-1)'
             }
         }
-        /*stage('Push Docker Image') {
+        stage('Push Docker Image') {
             
             steps {
                 script {
@@ -76,14 +76,14 @@ pipeline {
         stage('DeployToKubernetes') {
             
             steps {
-                //input 'Deploy?'
-               //milestone(1)
-                //kubernetesDeploy(
-                   // kubeconfigId: 'kubeconfig',
-                   // configs: 'sample.yml',
-                    //enableConfigSubstitution: true
-                //)
-                //}
+                input 'Deploy?'
+                milestone(1)
+                /*kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'sample.yml',
+                    enableConfigSubstitution: true
+                )
+                }*/
                 sh '''
                 export PATH=$PATH:/var/lib/jenkins
                 kubectl get svc
