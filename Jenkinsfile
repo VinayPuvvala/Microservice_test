@@ -47,7 +47,7 @@ pipeline {
                  docker.build('harrisdemorepo')
                 }
                     }
-                }*/
+                }
         stage('AWS GET Credentials') {
             steps {
                 sh '$(aws ecr get-login --no-include-email --region us-east-1)'
