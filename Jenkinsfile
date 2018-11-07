@@ -87,7 +87,7 @@ pipeline {
                 sh '''
                 export PATH=$PATH:/var/lib/jenkins
                 kubectl get svc
-                //kubectl create -f sample.yml
+                kubectl create -f sample.yml
                 '''              
              }
             
