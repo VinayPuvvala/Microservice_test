@@ -61,8 +61,8 @@ pipeline {
                         docker.image('harrisdemorepo').push('latest')
                     }
                     }
-                }*/
-            }
+                }
+            }*/
             /*stage('Pull Docker Image') {
             
             steps {
