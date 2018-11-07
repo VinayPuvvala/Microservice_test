@@ -47,8 +47,13 @@ pipeline {
                  docker.build('harrisdemorepo')
                 }
                     }
-                }
-        stage('Push Docker Image') {
+                }*/
+        stage('AWS GET Credentials') {
+            steps {
+                sh '$(aws ecr get-login --no-include-email --region us-east-1)'
+            }
+        }
+        /*stage('Push Docker Image') {
             
             steps {
                 script {
@@ -56,7 +61,7 @@ pipeline {
                         docker.image('harrisdemorepo').push('latest')
                     }
                     }
-                }
+                }*/
             }
             /*stage('Pull Docker Image') {
             
