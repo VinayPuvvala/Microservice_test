@@ -14,7 +14,9 @@ spec:
         image: 475485431052.dkr.ecr.us-east-1.amazonaws.com/harrisdemorepo:latest
         ports:
         - containerPort: 1883
-        imagePullPolicy: Always
+        imagePullPolicy: Always  
+      imagePullSecrets:
+        - name: ecrregistrypullsecret
 ---
 apiVersion: v1
 kind: Service
